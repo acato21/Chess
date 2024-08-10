@@ -1,4 +1,5 @@
-﻿using Board;
+﻿using board;
+using xadrez_console;
 
 namespace chess
 {
@@ -6,8 +7,11 @@ namespace chess
     {
         public static void Main(string[] args)
         {
-            Position position = new Position(1,3);
-            Console.WriteLine(position);
+            Board bd = new Board(8,8);
+
+            Screen.printBoard(bd);
+
+            Console.ReadLine();
         }
     }
 }
