@@ -18,10 +18,43 @@
             return this.parts[line,colum];
         }
 
-        public void PlacePart(Part part, Position position) 
+        public Part part(Position pos) 
+        { 
+            return this.parts[pos.line, pos.column];
+        }
+
+        public void PlacePart(Part part, Position pos) 
         {
-            parts[position.line, position.column] = part;
-            part.position = position;
+            if (ExistsPart(pos))
+            {
+                throw new BoardException("There is already a piece in that position");
+            }
+
+            parts[pos.line, pos.column] = part;
+            part.position = pos;
+        }
+
+        public bool ExistsPart(Position pos)
+        {
+            ValidatePosition(pos);
+            return parts[pos.line, pos.column] != null;
+        }
+
+        public bool ValidPosition(Position pos)
+        {
+            if(pos.line < 0 || pos.column < 0 || pos.line >= this.lines || pos.column >= this.columns)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void ValidatePosition(Position pos)
+        {
+            if (!ValidPosition(pos))
+            {
+                throw new BoardException("Invalid position");
+            }       
         }
     }
 }
