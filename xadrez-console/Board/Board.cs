@@ -17,5 +17,11 @@
         {
             return this.parts[line,colum];
         }
+
+        public void PlacePart(Part part, Position position) 
+        {
+            parts[position.line, position.column] = part;
+            part.position = position;
+        }
     }
 }

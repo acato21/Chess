@@ -16,7 +16,7 @@ namespace xadrez_console
                         Console.Write("- ");
                     } else
                     {
-                        Console.WriteLine($"{board.part(i, j)} ");
+                        Console.Write($"{board.part(i, j)} ");
                     }
                 }
 
